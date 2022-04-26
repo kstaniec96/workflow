@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+      xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <title>{{ subject }}</title>
+
+    <!-- FONTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+        WebFont.load({
+            google: {
+                'families': ['Poppins:500,700', 'Fira Sans:400,500,700']
+            },
+
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <!-- # -->
+
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+</head>
+
+<body style="
+    Margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;
+    mso-padding-alt: 0px 0px 0px 0px;
+    background-color:#fafafa;
+    font-size: 100%;
+" bgcolor="#fafafa"
+>
+    <!--[if mso]>
+    <style type="text/css">
+        body, table, td {
+            font-family: Arial, Helvetica, sans-serif !important;
+        }
+    </style>
+    <![endif]-->
+
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="
+        background-color: #ffffff;
+        width: 100%;
+        max-width: 800px;
+        Margin:20px auto 0px auto;
+        padding:35px 0px 0px 0px;
+        mso-padding-alt: 35px 0px 0px 0px;
+        border: 1px solid #e5e5e5;
+        border-bottom: none;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        -webkit-border-top-right-radius: 5px;
+        -webkit-border-top-left-radius: 5px;
+        -moz-border-top-right-radius: 5px;
+        -moz-border-top-left-radius: 5px;
+    ">
+        <tbody>
+            {% include 'layouts/parts/header.html.twig' %}
+
+            <tr>
+                <td width="100%" align="center" style="width:100%">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="
+                padding: 0px 25px 40px 25px;
+                mso-padding-alt: 0px 25px 40px 25px;
+                width: 100%;
+            ">
+                        <tr align="center">
+                            <td bgcolor="#fafafa" align="center" style="
+                        webkit-border-radius: 5px;
+                        -moz-border-radius: 5px;
+                        border-radius: 5px;
+                        background-color: #fafafa;
+                        padding: 20px 20px 20px 20px;
+                        mso-padding-alt: 20px 20px 20px 20px;
+                        text-align: center;
+                        max-width: 700px;
+                        border: 1px solid #e5e5e5
+                    ">
+                                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" style="width: 100%; text-align: center">
+                                    <tr>
+                                        <td width="100%" align="center" style="width:100%">
+                                            <span style="
+                                                font-weight: 600;
+                                                font-size: 17px;
+                                                color: #666;
+                                                font-family: Arial, Helvetica, sans-serif;
+                                            ">
+                                                {{ __('email.welcome') }}
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="100%" align="center" style="
+                                    width:100%;
+                                    padding:30px 0px 30px 0px;
+                                    mso-padding-alt: 30px 0px 30px 0px;
+                                ">
+                                            <span style="
+                                                font-weight: 500;
+                                                font-size: 15px;
+                                                color: #666666;
+                                                font-family: Arial, Helvetica, sans-serif;
+                                            ">
+                                                {{ content|raw }}
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    {% block main_content %}{% endblock %}
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            {% include 'layouts/parts/footer.html.twig' %}
+        </tbody>
+    </table>
+</body>
+</html>

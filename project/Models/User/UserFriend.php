@@ -1,0 +1,21 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Project\Models\User;
+
+use Project\Models\User;
+use Simpler\Components\Database\Model;
+
+/**
+ * @property int $id
+ * @property int $user_id
+ * @property int $friend_id
+ */
+class UserFriend extends Model
+{
+    protected $relations = [
+        'user' => [User::class, 'user_id', 'id'],
+        'friend' => [User::class, 'friend_id', 'id'],
+    ];
+}

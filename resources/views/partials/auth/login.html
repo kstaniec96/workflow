@@ -1,0 +1,40 @@
+<div class="auth-title">
+    <h3>Logowanie</h3>
+    <span>Zaloguj się na swoje konto</span>
+</div>
+
+<form class="form" method="POST" autocapitalize="off" autocomplete="off" id="form-login" action="/auth/login">
+    <div class="form-prepend-group form-group">
+        <div class="form-prepend">
+            <span class="material-icons-outlined">mail_outline</span>
+        </div>
+
+        <input name="email" placeholder="Adres e-mail" id="email" class="form-control required">
+    </div>
+
+    <div class="form-prepend-group form-group">
+        <div class="form-prepend">
+            <span class="material-icons-outlined">lock</span>
+        </div>
+
+        <input type="password" name="password" placeholder="Hasło" id="password" class="form-control required">
+    </div>
+
+    <button type="submit" class="custom-button color-white bg-color-green">
+        <span>Zaloguj się</span>
+    </button>
+</form>
+
+<div class="form-footer">
+    <span>lub</span>
+
+    <a href="/auth/register" class="custom-button color-white bg-color-black">
+        Utwórz nowe konto
+    </a>
+</div>
+
+<div class="form-action">
+    <a href="/auth/password" class="custom-link">
+        Nie pamiętam hasła
+    </a>
+</div>

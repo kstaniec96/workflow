@@ -1,0 +1,26 @@
+<div class="auth-title">
+    <h3>Zresetuj hasło</h3>
+    <span>Nie pamiętasz swojego hasła?</span>
+</div>
+
+<form class="form" method="POST" autocapitalize="off" autocomplete="off" id="form-first-password" action="/auth/password">
+    <div class="form-prepend-group form-group">
+        <div class="form-prepend">
+            <span class="material-icons-outlined">mail_outline</span>
+        </div>
+
+        <input name="email" placeholder="Adres e-mail" id="email" class="form-control required">
+    </div>
+
+    <button type="submit" class="custom-button color-white bg-color-black">
+        <span>Zresetuj hasło</span>
+    </button>
+</form>
+
+<div class="form-footer">
+    <span>lub</span>
+
+    <a href="/auth/login" class="custom-button color-white bg-color-green">
+        Zaloguj się
+    </a>
+</div>

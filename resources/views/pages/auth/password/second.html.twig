@@ -1,0 +1,38 @@
+{% extends 'auth.html.twig' %}
+
+{% block title %} {{ __('Reset your password') }} {% endblock %}
+{% block subtitle %} {{ __('Enter a new password for your account') }} {% endblock %}
+
+{% block auth_content %}
+    <form
+        class="form"
+        method="POST"
+        autocapitalize="off"
+        autocomplete="off"
+        id="form-second-password"
+        action="{{ route('auth.password.verify', {token: token}) }}"
+    >
+        <input type="hidden" value="{{ csrfToken() }}" name="csrf_token">
+        <input type="hidden" value="{{ token }}" name="token" id="token">
+
+        <div class="form-prepend-group form-group">
+            <div class="form-prepend">
+                <span class="material-icons-outlined">lock</span>
+            </div>
+
+            <input type="password" name="password" placeholder="Hasło" id="password" class="form-control required">
+        </div>
+
+        <div class="form-prepend-group form-group">
+            <div class="form-prepend">
+                <span class="material-icons-outlined">lock</span>
+            </div>
+
+            <input type="password" name="password-confirm" placeholder="Potwierdź hasło" id="password-confirm" class="form-control required">
+        </div>
+
+        <button type="submit" class="custom-button color-white bg-color-black">
+            <span>Zresetuj hasło</span>
+        </button>
+    </form>
+{% endblock %}

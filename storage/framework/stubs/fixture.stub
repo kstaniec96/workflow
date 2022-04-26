@@ -1,0 +1,15 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Database\Fixtures;
+
+use Simpler\Components\Database\Fixtures\Fixture;
+
+class {{ class }} extends Fixture
+{
+    public function run(): void
+    {
+        // User::query()->insert();
+    }
+}

@@ -1,0 +1,208 @@
+.home-page .section-title {
+    font-size: 18px;
+    margin-left: 15px;
+    text-transform: uppercase;
+}
+
+.home-page > section {
+    margin-bottom: 60px;
+}
+
+/* Section welcome */
+.home-page .section-welcome {
+    text-align: center;
+}
+
+.home-page .section-welcome > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-page .section-welcome h1, .preloader-page h1 {
+    font-size: 65px;
+}
+
+.home-page .section-welcome h2 {
+    font-size: 26px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.home-page .section-welcome .buttons {
+    margin-top: 30px;
+}
+
+.home-page .section-welcome .buttons span {
+    display: block;
+    margin: 0 10px;
+}
+
+/* Section stats */
+.home-page .section-stats .vertical-list {
+    justify-content: center;
+}
+
+.home-page .section-stats .vertical-list li:not(:first-child) {
+    margin-left: 50px;
+}
+
+.home-page .section-stats .vertical-list li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid var(--snow);
+    background: var(--secondary);
+    border-radius: 10px;
+    height: 200px;
+    width: 200px;
+    padding: 30px 20px;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, .15);
+    text-align: center;
+}
+
+.home-page .section-stats .vertical-list li * {
+    color: var(--muted);
+}
+
+.home-page .section-stats .vertical-list li span.material-icons-outlined {
+    font-size: 50px;
+}
+
+.home-page .section-stats .vertical-list li > div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.home-page .section-stats .vertical-list li > div h5 {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.home-page .section-stats .vertical-list li > div span {
+    font-size: 25px;
+    font-weight: 900;
+}
+
+/* Section socials */
+.home-page .section-socials {
+    margin-left: -15px;
+}
+
+.home-page .section-socials li {
+    max-width: 300px;
+    width: 100%;
+    height: 100px;
+    margin-top: 20px;
+}
+
+.home-page .section-socials li a {
+    width: 100%;
+    height: 100%;
+    background: var(--secondary);
+    border-radius: 10px;
+    border: 1px solid var(--snow);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, .1);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-size: cover;
+    transition: .4s;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-page .section-socials li a:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.home-page .section-socials li a:hover {
+    opacity: .65;
+}
+
+.home-page .section-socials li a h3 {
+    color: var(--white);
+    text-shadow: 0 0 4px rgba(0, 0, 0, .15);
+    font-size: 15px;
+    z-index: 2;
+    max-width: calc(100% - 40px - 8px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Section user groups */
+.home-page .section-user-groups {
+    margin-left: -15px;
+}
+
+.home-page .section-user-groups .group-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, .15);
+    background-position: center;
+    background-size: cover;
+    margin-right: 8px;
+    z-index: 2;
+}
+
+/* -------------------------------------------------------------------
+MEDIA QUERIES
+--------------------------------------------------------------------*/
+@media screen and (max-width: 780px) {
+    .home-page .section-stats .vertical-list {
+        justify-content: space-between;
+    }
+
+    .home-page .section-stats .vertical-list li {
+        margin-left: 0 !important;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .home-page .section-stats .vertical-list li {
+        width: 100%;
+        height: auto;
+    }
+
+    .home-page .section-stats .vertical-list li:not(:first-child) {
+        margin-top: 15px;
+    }
+
+    .home-page .section-socials {
+        margin-left: 0 !important;
+    }
+
+    .home-page .section-socials li {
+        max-width: 100%;
+        margin-left: 0 !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .home-page .section-welcome > div.top {
+        flex-direction: column;
+    }
+
+    .header-page .navbar-page .custom-button > span.material-icons-outlined {
+        display: block;
+    }
+
+    .header-page .navbar-page .custom-button > span:not(.material-icons-outlined) {
+        display: none;
+    }
+}

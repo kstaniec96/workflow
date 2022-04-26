@@ -1,0 +1,77 @@
+html {
+    background: #fafafa;
+}
+
+body, html {
+    font-size: 13px;
+    height: auto !important;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html, div, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, input, button, textarea, select, p, xmp {
+    margin: 0;
+    padding: 0
+}
+
+img, button, input, textarea, fieldset {
+    border: 0
+}
+
+button, input, option, select, textarea {
+    font: inherit
+}
+
+li {
+    list-style: none
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%
+}
+
+button {
+    cursor: pointer;
+    background: transparent
+}
+
+button:focus, a:focus, input:focus, textarea:focus, select:focus {
+    outline: none
+}
+
+textarea {
+    resize: none;
+}
+
+a, xmp {
+    display: inline-block;
+    text-decoration: none
+}
+
+p, b, span, h1, h2, h3, h4, h5, h6, a, input, label, small, textarea, select {
+    color: var(--black);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: var(--black)
+}
+
+i {
+    font-style: inherit
+}
+
+* {
+    box-sizing: border-box
+}
+
+img {
+    max-width: 100%;
+    height: auto
+}

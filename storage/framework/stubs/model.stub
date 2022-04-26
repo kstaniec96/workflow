@@ -1,0 +1,12 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Project\Models{{ namespace }};
+
+use Simpler\Components\Database\Model;
+
+class {{ class }} extends Model
+{
+    //
+}

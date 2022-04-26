@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ __('app.title.home') }} {% endblock %}
+
+{% block main_content %}
+    <div class="home-page" id="home-page">
+        <!-- Section welcome -->
+        <section class="section-welcome" id="section-welcome">
+            <div class="top" data-aos="fade-down">
+                <h2>Witaj na</h2>
+
+                <div class="logo">
+                    <h1>{{ env('PROJECT_NAME') }}</h1>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <a href="{{ route('auth.register.index') }}" data-aos="fade-right" class="custom-button color-white bg-color-black">
+                    Utwórz nowe konto
+                </a>
+
+                <span data-aos="fade-down">lub</span>
+
+                <a href="{{ route('auth.login.index') }}" data-aos="fade-left" class="custom-button color-white bg-color-green">
+                    Zaloguj się
+                </a>
+            </div>
+        </section>
+
+        <!-- Section stats -->
+        <section class="section-stats" id="section-stats">
+            <ul class="vertical-list">
+                <li data-aos="fade-right">
+                    <span class="material-icons-outlined">favorite_border</span>
+                    <div>
+                        <h5>Grup przewodnich</h5>
+                        <span>{{ count(groups) }}</span>
+                    </div>
+                </li>
+
+                <li data-aos="fade-down">
+                    <span class="material-icons-outlined">people_alt</span>
+                    <div>
+                        <h5>Aktywnych użytkowników</h5>
+                        <span>{{ count(users) }}</span>
+                    </div>
+                </li>
+
+                <li data-aos="fade-left">
+                    <span class="material-icons-outlined">loyalty</span>
+                    <div>
+                        <h5>Grup użytkowników</h5>
+                        <span>{{ count(usersGroups) }}</span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section groups -->
+        <section class="section-socials" id="section-socials">
+            <h2 class="section-title" data-aos="fade-right">
+                Domyślne grupy przewodnie
+            </h2>
+
+            <ul class="vertical-list">
+                {% for group in groups %}
+                    <li data-aos="fade-left" title="{{ group.name }}">
+                        <a href="#" style="background-image: url('{{ asset('images/vendor/groups/' ~ group.image) }}')">
+                            <h3>{{ group.name }}</h3>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <!-- Section user groups -->
+        <section class="section-user-groups section-socials" id="section-user-groups">
+            <h2 class="section-title" data-aos="fade-right">Grupy użytkowników</h2>
+
+            <ul class="vertical-list">
+                {% for group in usersGroups %}
+                    <li data-aos="fade-left" title="{{ group.name }}">
+                        <a href="#" style="background-image: url('{{ storage(group.uuid ~ '/groups/bg/' ~ group.bg) }}')">
+                            <div class="group-logo" style="background-image: url('{{ storage(group.uuid ~ '/groups/logo/' ~ group.logo) }}')"></div>
+                            <h3>{{ group.name }}</h3>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+{% endblock %}

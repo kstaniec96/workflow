@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+use Project\Console\Commands;
+
+error_reporting(E_ALL & ~E_NOTICE);
+const RUN_CONSOLE = true;
+
+// Load init
+@ob_start();
+require 'init.php';
+
+// Init commands
+Commands::init($argv);

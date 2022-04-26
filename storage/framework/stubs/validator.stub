@@ -1,0 +1,25 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Project\Http\Validators{{ namespace }};
+
+use Simpler\Components\Http\Validator\FormValidator;
+
+class {{ class }} extends FormValidator
+{
+    public function rules(): array
+    {
+        return [];
+    }
+
+    public function fields(): array
+    {
+        return [];
+    }
+
+    public function errors(): array
+    {
+        return [];
+    }
+}

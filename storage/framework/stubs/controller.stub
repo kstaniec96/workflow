@@ -1,0 +1,21 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Project\Http\Controllers{{ namespace }};
+
+use Simpler\Components\Http\BaseController;
+use Simpler\Components\Requests\Request;
+
+class {{ class }} extends BaseController
+{
+    public function index(): string
+    {
+        return $this->render('path/to/view');
+    }
+
+    public function api(Request $request): string
+    {
+        return $this->json('Hello world!');
+    }
+}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ version('styles/auth.css') }}">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ version('scripts/forms.js') }}" nonce="{{ nonce() }}"></script>
+{% endblock %}
+
+{% block main_content %}
+    <div class="auth-page home-page {{ hasRoute('auth.register.verify') ? 'auth-register-container' : '' }}" id="auth-page">
+        <div class="auth-container" data-aos="fade-up">
+            <div class="auth-title">
+                <h3>{% block title %}{% endblock %}</h3>
+                <span>{% block subtitle %}{% endblock %}</span>
+            </div>
+
+            {% block auth_content %}{% endblock auth_content %}
+        </div>
+    </div>
+{% endblock main_content %}

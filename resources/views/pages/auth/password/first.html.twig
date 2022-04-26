@@ -1,0 +1,37 @@
+{% extends 'auth.html.twig' %}
+
+{% block title %} {{ __('Reset your password') }} {% endblock %}
+{% block subtitle %} {{ __('Forgot your password?') }} {% endblock %}
+
+{% block auth_content %}
+    <form
+        class="form"
+        method="POST"
+        autocapitalize="off"
+        autocomplete="off"
+        id="form-first-password"
+        action="{{ route('auth.password.index') }}"
+    >
+        <input type="hidden" value="{{ csrfToken() }}" name="csrf_token">
+
+        <div class="form-prepend-group form-group">
+            <div class="form-prepend">
+                <span class="material-icons-outlined">mail_outline</span>
+            </div>
+
+            <input name="email" placeholder="Adres e-mail" id="email" class="form-control required">
+        </div>
+
+        <button type="submit" class="custom-button color-white bg-color-black">
+            <span>Zresetuj hasło</span>
+        </button>
+    </form>
+
+    <div class="form-footer">
+        <span>lub</span>
+
+        <a href="{{ route('auth.login.index') }}" class="custom-button color-white bg-color-green">
+            Zaloguj się
+        </a>
+    </div>
+{% endblock %}

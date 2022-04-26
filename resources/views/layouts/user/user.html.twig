@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ version('styles/user.css') }}">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ version('scripts/user.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js" nonce="{{ nonce() }}"></script>
+{% endblock %}
+
+{% block main_content %}
+    <div class="home-page user-container" id="user-pages">
+        {% include 'user/parts/navbar.html.twig' %}
+
+        <section class="section-main-content" id="section-main-content">
+            {% block user_content %}{% endblock user_content %}
+        </section>
+
+        {% include 'user/parts/sidebar.html.twig' %}
+    </div>
+{% endblock main_content %}

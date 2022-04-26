@@ -1,0 +1,13 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Project\Http\Middlewares{{ namespace }};
+
+class {{ class }}
+{
+    public function handle(): void
+    {
+        //
+    }
+}

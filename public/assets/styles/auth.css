@@ -1,0 +1,140 @@
+.auth-page {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.auth-page .auth-container {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid var(--snow);
+    padding: 25px;
+    border-radius: 4px;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, .1);
+    background: var(--white);
+}
+
+.auth-page .auth-container .auth-title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.auth-page .auth-container .auth-title h3 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.auth-page .form-footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.auth-page .form-footer span {
+    display: block;
+    margin: 10px 0;
+}
+
+.auth-page .form-action {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.auth-register-container .auth-container {
+    max-width: 100%;
+}
+
+.auth-register-container .groups {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.auth-register-container .groups input[type=checkbox] {
+    display: none;
+}
+
+.auth-register-container .groups label {
+    max-width: 300px;
+    width: 100%;
+    height: 100px;
+    margin-top: 20px;
+    background: var(--secondary);
+    border-radius: 10px;
+    border: 1px solid var(--snow);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, .1);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-size: cover;
+    transition: .4s;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.auth-register-container .groups input:checked + label:before {
+    content: "check_circle";
+    font-size: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    direction: ltr;
+    display: inline-block;
+    font-family: 'Material Icons Outlined';
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    z-index: 10;
+    background: rgba(0, 0, 0, .7);
+}
+
+.auth-register-container .groups label:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.auth-register-container .groups label h3 {
+    color: var(--white);
+    text-shadow: 0 0 4px rgba(0, 0, 0, .15);
+    font-size: 15px;
+    z-index: 2;
+    max-width: calc(100% - 40px - 8px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.auth-register-container .form-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.auth-register-container .form-button button {
+    max-width: 200px;
+}

@@ -1,0 +1,51 @@
+{% extends 'auth.html.twig' %}
+
+{% block title %} {{ __('app.Login') }} {% endblock %}
+{% block subtitle %} {{ __('app.Log in to your account') }} {% endblock %}
+
+{% block auth_content %}
+    <form
+        class="form"
+        method="POST"
+        autocapitalize="off"
+        autocomplete="off"
+        id="form-login"
+        action="{{ route('auth.login.index') }}"
+    >
+        <input type="hidden" value="{{ csrfToken() }}" name="csrf_token">
+
+        <div class="form-prepend-group form-group">
+            <div class="form-prepend">
+                <span class="material-icons-outlined">mail_outline</span>
+            </div>
+
+            <input name="email" placeholder="Adres e-mail" id="email" class="form-control required">
+        </div>
+
+        <div class="form-prepend-group form-group">
+            <div class="form-prepend">
+                <span class="material-icons-outlined">lock</span>
+            </div>
+
+            <input type="password" name="password" placeholder="Hasło" id="password" class="form-control required">
+        </div>
+
+        <button type="submit" class="custom-button color-white bg-color-green">
+            <span>Zaloguj się</span>
+        </button>
+    </form>
+
+    <div class="form-footer">
+        <span>lub</span>
+
+        <a href="{{ route('auth.register.index') }}" class="custom-button color-white bg-color-black">
+            Utwórz nowe konto
+        </a>
+    </div>
+
+    <div class="form-action">
+        <a href="{{ route('auth.password.index') }}" class="custom-link">
+            Nie pamiętam hasła
+        </a>
+    </div>
+{% endblock %}

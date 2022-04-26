@@ -1,0 +1,22 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Project\Console\Commands{{ namespace }};
+
+use Simpler\Components\Console\Command;
+use Exception;
+
+class {{ class }} extends Command
+{
+    public function handle(): int
+    {
+        try {
+            $this->info('Hello world');
+        } catch (Exception $e) {
+            $this->error($e->getMessage());
+        }
+
+        return 0;
+    }
+}

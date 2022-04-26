@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="{{ locale() }}">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <title>{{ env('PROJECT_NAME') }} - {% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="{{ env('PROJECT_AUTHOR') }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="csrf-token" content="{{ csrfToken() }}">
+
+    <link rel="stylesheet" href="{{ version('plugins/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ version('plugins/sweetalert2/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ version('plugins/css/app.css') }}">
+    <link rel="stylesheet" href="{{ version('plugins/css/reset.css') }}">
+    <link rel="stylesheet" href="{{ version('plugins/aos/aos.min.css') }}">
+
+    <link rel="stylesheet" href="{{ version('styles/style.css') }}">
+    <link rel="stylesheet" href="{{ version('styles/home.css') }}">
+    <link rel="stylesheet" href="{{ version('styles/auth.css') }}">
+
+    {% block styles %}{% endblock %}
+</head>
+<body class="overflow-hidden">
+    {% include 'parts/preloader.html.twig' %}
+    {% include 'parts/alerts.html.twig' %}
+    {% include 'parts/navbar.html.twig' %}
+
+    <div class="global-container {{ auth() ? 'global-user-container' : '' }}">
+        <div class="fluid-container">
+            {% block main_content %}{% endblock %}
+
+            <footer class="footer-page" id="footer-page">
+                <span class="color-muted">
+                    {{ env('PROJECT_NAME') }} © by {{ env('PROJECT_AUTHOR') }} {{  date('Y') }}
+                </span>
+            </footer>
+        </div>
+    </div>
+
+    <script src="{{ version('plugins/js/jquery-3.6.0.min.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('plugins/sweetalert2/sweetalert2.min.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('plugins/aos/aos.min.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('plugins/js/autosize.min.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('plugins/js/js.cookie.min.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('plugins/js/config.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('plugins/js/app.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('plugins/js/validation.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('plugins/js/preloader.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('plugins/js/theia-sticky-sidebar.js') }}" nonce="{{ nonce() }}"></script>
+
+    <script src="{{ version('scripts/index.js') }}" nonce="{{ nonce() }}"></script>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

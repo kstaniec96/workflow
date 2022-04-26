@@ -1,0 +1,132 @@
+<div id="sidebar-page">
+    <div class="sidebar-page home-page">
+        <section class="sidebar-section-groups section-socials">
+            <h2 class="section-title">
+                Grupy przewodnie
+            </h2>
+
+            <ul class="vertical-list">
+                {% if userMainGroups is not empty %}
+                    {% for userMainGroup in userMainGroups %}
+                        <li title="{{ userMainGroup.name }}">
+                            <a href="#" style="background-image: url('{{ asset('images/vendor/groups/' ~ userMainGroup.image) }}')">
+                                <h3>{{ userMainGroup.name }}</h3>
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li class="none-data">
+                        <div class="alert bg-color-warning">
+                            <span>Brak grup do wyświetlenia</span>
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <div class="join-to-group">
+                <a href="" class="custom-link">
+                    Dołącz do nowej grupy przewodniej
+                </a>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <section class="sidebar-section-groups section-user-groups section-socials">
+            <h2 class="section-title">
+                Grupy użytkowników
+            </h2>
+
+            <ul>
+                {% if usersGroup is not empty %}
+                    {% for userGroup in usersGroup %}
+                        <li title="{{ userGroup.name }}">
+                            <a href="#" style="background-image: url('{{ storage(userGroup.uuid ~ '/groups/bg/' ~ userGroup.bg) }}')">
+                                <div class="group-logo" style="background-image: url('{{ storage(userGroup.uuid ~ '/groups/logo/' ~ userGroup.logo) }}')"></div>
+                                <h3>{{ userGroup.name }}</h3>
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li class="none-data">
+                        <div class="alert bg-color-warning">
+                            <span>Brak grup do wyświetlenia</span>
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <div class="join-to-group">
+                <a href="" class="custom-link">
+                    Dołącz do innych grup
+                </a>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <section class="sidebar-section-groups section-user-groups section-socials">
+            <h2 class="section-title">
+                Twoje grupy
+            </h2>
+
+            <ul>
+                {% if userGroups is not empty %}
+                    {% for userGroup in userGroups %}
+                        <li title="{{ userGroup.name }}">
+                            <a href="#" style="background-image: url('{{ storage(userGroup.uuid ~ '/groups/bg/' ~ userGroup.bg) }}')">
+                                <div class="group-logo" style="background-image: url('{{ storage(userGroup.uuid ~ '/groups/logo/' ~ userGroup.logo) }}')"></div>
+                                <h3>{{ userGroup.name }}</h3>
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li class="none-data">
+                        <div class="alert bg-color-warning">
+                            <span>Brak grup do wyświetlenia</span>
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <div class="join-to-group">
+                <a href="" class="custom-link">
+                    Utwórz własną grupę
+                </a>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <section class="sidebar-section-groups section-user-groups section-socials">
+            <h2 class="section-title">
+                Twoi znajomi
+            </h2>
+
+            <ul>
+                {% if userFriends is not empty %}
+                    {% for userFriend in userFriends %}
+                        <li>
+                            <a href="#" style="background-image: url('{{ storage(userFriend.uuid ~ '/images/' ~ userFriend.bg) }}')">
+                                <div class="group-logo" style="background-image: url('{{ storage(userFriend.uuid ~ '/images/' ~ userFriend.avatar) }}')"></div>
+                                <h3>{{ userFriend.username }}</h3>
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li class="none-data">
+                        <div class="alert bg-color-warning">
+                            <span>Nie masz jeszcze żadnych znajomych</span>
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <div class="join-to-group">
+                <a href="" class="custom-link">
+                    Zaproś nowych znajomych
+                </a>
+            </div>
+        </section>
+    </div>
+</div>

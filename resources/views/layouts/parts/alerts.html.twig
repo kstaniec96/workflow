@@ -1,0 +1,13 @@
+<div class="session-alert" id="session-alert">
+    {% if session('flash.success') %}
+        <div class="session-alert-box alert-success">
+            {{ session('flash.success') }}
+        </div>
+    {% endif %}
+
+    {% if session('flash.error') %}
+        <div class="session-alert-box alert-danger">
+            {{ session('flash.error') }}
+        </div>
+    {% endif %}
+</div>

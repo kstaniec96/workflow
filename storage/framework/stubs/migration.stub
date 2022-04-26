@@ -1,0 +1,20 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Database\Migrations;
+
+use Simpler\Components\Database\Migrations\Migration;
+
+class {{ class }} extends Migration
+{
+    public function up(): void
+    {
+        $this->run('NEW SQL QUERY');
+    }
+
+    public function down(): void
+    {
+        //$this->run('NEW SQL QUERY');
+    }
+}

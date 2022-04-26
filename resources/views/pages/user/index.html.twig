@@ -1,0 +1,30 @@
+{% extends 'user/user.html.twig' %}
+{% block title %} {{ __('title.home') }} {% endblock %}
+
+{% block user_content %}
+    <div class="page-title">
+        <span class="material-icons-outlined">home</span>
+        <h1>{{ __('user.main') }}</h1>
+    </div>
+
+    <div class="box-post box-own-post">
+        <form method="POST" autocapitalize="off" autocomplete="off">
+            <fieldset class="row-textarea">
+                <div class="avatar-md">
+                    <span class="material-icons-outlined">face</span>
+                </div>
+
+                <textarea autofocus name="post" id="post" placeholder="Opublikuj coś fajnego..." class="form-control"></textarea>
+            </fieldset>
+
+            <fieldset class="row-button">
+                <button type="button" class="custom-button bg-color-green">
+                    <span>Opublikuj post</span>
+                </button>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="box-post user-post"></div>
+{% endblock %}
+

@@ -1,0 +1,80 @@
+<header class="header-page" id="header-page" data-aos="fade-down">
+    <div class="fluid-container">
+        <div class="logo">
+            <a href="/" title="{{ env('PROJECT_NAME') }}">
+                <h1>{{ env('PROJECT_NAME') }}</h1>
+            </a>
+        </div>
+
+        <nav class="navbar-page" id="navbar-page">
+            {% if guest() %}
+                <a href="{{ route('auth.login.index') }}" role="button" class="custom-button bg-color-green color-white">
+                    <span>Logowanie</span>
+                    <span class="material-icons-outlined">person</span>
+                </a>
+
+                <a href="{{ route('auth.register.index') }}" role="button" class="custom-button bg-color-black color-white">
+                    <span>Rejestracja</span>
+                    <span class="material-icons-outlined">person_add</span>
+                </a>
+            {% else %}
+                <div class="dropdown-menu">
+                    <button class="dropdown-toggle avatar-sm">
+                        <span class="material-icons-outlined">face</span>
+                    </button>
+
+                    <ul class="dropdown-menu-target" role="menu">
+                        <li class="{{ activeNavItem('user.home.index') }}">
+                            <a href="{{ route('user.home.index') }}" class="custom-link">
+                                <span class="material-icons-outlined">home</span>
+                                <span>Główna</span>
+                            </a>
+                        </li>
+
+                        <li class="{{ activeNavItem('user.profile.index') }}">
+                            <a href="{{ route('user.profile.index') }}" class="custom-link">
+                                <span class="material-icons-outlined">face</span>
+                                <span>Profil</span>
+                            </a>
+                        </li>
+
+                        <li class="{{ activeNavItem('user.default-groups.index') }}">
+                            <a href="{{ route('user.default-groups.index') }}" class="custom-link">
+                                <span class="material-icons-outlined">favorite_border</span>
+                                <span>Grupy przewodnie</span>
+                            </a>
+                        </li>
+
+                        <li class="{{ activeNavItem('user.groups.index') }}">
+                            <a href="{{ route('user.groups.index') }}" class="custom-link">
+                                <span class="material-icons-outlined">loyalty</span>
+                                <span>Grupy</span>
+                            </a>
+                        </li>
+
+                        <li class="{{ activeNavItem('user.friends.index') }}">
+                            <a href="{{ route('user.friends.index') }}" class="custom-link">
+                                <span class="material-icons-outlined">people</span>
+                                <span>Znajomi</span>
+                            </a>
+                        </li>
+
+                        <li class="{{ activeNavItem('user.settings.index') }}">
+                            <a href="{{ route('user.settings.index') }}" class="custom-link">
+                                <span class="material-icons-outlined">settings</span>
+                                <span>Ustawienia</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('user.logout') }}" class="custom-link">
+                                <span class="material-icons-outlined">logout</span>
+                                <span>Wyloguj się</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            {% endif %}
+        </nav>
+    </div>
+</header>

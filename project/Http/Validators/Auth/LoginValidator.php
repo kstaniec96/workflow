@@ -19,7 +19,7 @@ class LoginValidator extends FormValidator
     public function fields(): array
     {
         return [
-            'password' => 'hasło',
+            'password' => __('validator.fields.password'),
         ];
     }
 

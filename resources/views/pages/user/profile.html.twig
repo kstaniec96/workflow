@@ -1,9 +1,28 @@
 {% extends 'user/user.html.twig' %}
-{% block title %} {{ __('Profile') }} {% endblock %}
+{% block title %} {{ __('app.title.profile') }} {% endblock %}
+
+{% block scripts %}
+    <script src="{{ version('scripts/user.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('scripts/user/posts/posts.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('scripts/user/posts/comments.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('scripts/user/posts/likes.js') }}" nonce="{{ nonce() }}"></script>
+{% endblock %}
 
 {% block user_content %}
     <div class="page-title">
         <span class="material-icons-outlined">face</span>
-        <h1>{{ __('Profile') }}</h1>
+        <h1>{{ __('app.title.profile') }}</h1>
     </div>
+
+    <div class="box-post box-own-post box-profile" style="background-image: url('{{ version('images/vendor/default/bg-group-default.jpg') }}')">
+        <div class="profile-avatar">
+            <img src="{{ asset('images/vendor/default/avatar-default.png') }}" alt="avatar">
+        </div>
+
+        <div class="profile-name">
+            <span>{{ user.username }}</span>
+        </div>
+    </div>
+
+    {% include 'posts.html.twig' %}
 {% endblock %}

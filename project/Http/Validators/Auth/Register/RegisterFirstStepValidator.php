@@ -20,13 +20,17 @@ class RegisterFirstStepValidator extends FormValidator
     public function fields(): array
     {
         return [
-            'password' => 'hasło',
-            'username' => 'nazwa użytkownika',
+            'password' => __('validator.fields.password'),
+            'username' => __('validator.fields.username'),
         ];
     }
 
     public function errors(): array
     {
-        return [];
+        return [
+            'password' => [
+                'password' => __('validator.rules.password'),
+            ],
+        ];
     }
 }

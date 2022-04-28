@@ -4,9 +4,10 @@
     <link rel="stylesheet" href="{{ version('styles/user.css') }}">
 {% endblock %}
 
+{% block extend_styles %}{% endblock %}
+
 {% block scripts %}
     <script src="{{ version('scripts/user.js') }}" nonce="{{ nonce() }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js" nonce="{{ nonce() }}"></script>
 {% endblock %}
 
 {% block main_content %}

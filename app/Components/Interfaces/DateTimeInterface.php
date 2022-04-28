@@ -29,7 +29,7 @@ interface DateTimeInterface
     public static function calc(string $parse, $value = 1, string $unit = 'hours', ?string $timezone = null): Carbon;
 
     /**
-     * @param $parse
+     * @param mixed $parse
      * @param string $format
      * @return mixed
      */

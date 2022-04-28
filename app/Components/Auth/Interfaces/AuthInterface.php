@@ -19,9 +19,9 @@ interface AuthInterface
 
     /**
      * @param mixed $relations
-     * @return null|Model
+     * @return Model
      */
-    public static function user($relations = null): ?Model;
+    public static function user($relations = null): Model;
 
     /**
      * @return int|null

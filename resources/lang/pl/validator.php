@@ -30,7 +30,7 @@ return [
         /*
          * Custom rule valid messages.
          */
-        //
+        'password' => 'Hasło musi zawierać przynajmniej jedną małą i dużą literę, jedną liczbę oraz jeden znak specjalny.',
     ],
 
     /*
@@ -39,5 +39,18 @@ return [
     'errors' => [
         'ruleCannotByEmpty' => 'Reguła nie może być pusta',
         'ruleDoesNotExist' => 'Reguła :rule nie istnieje',
+    ],
+
+    /*
+     * Fields name.
+     */
+    'fields' => [
+        'password' => 'hasło',
+        'username' => 'nazwa użytkownika',
+        'groups' => 'grupy',
+        'password-confirm' => 'potwierdź hasło',
+        'message' => 'wiadomość',
+        'name' => 'nazwa',
+        'description' => 'opis',
     ],
 ];

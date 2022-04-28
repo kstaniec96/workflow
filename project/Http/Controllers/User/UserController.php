@@ -9,6 +9,7 @@ use Project\Models\User\UserFriend;
 use Project\Models\User\UserGroup;
 use Project\Models\User\UserMainGroup;
 use Simpler\Components\Auth\Auth;
+use Simpler\Components\Enums\State;
 use Simpler\Components\Http\BaseController;
 
 abstract class UserController extends BaseController
@@ -25,7 +26,9 @@ abstract class UserController extends BaseController
             ->with(['group g', 'user u'])
             ->get('g.*, u.*');
 
-        $userGroups = Auth::user('userCreatedGroups ucg')->get('ucg.*, uuid') ?? [];
+        $userGroups = Auth::user('userCreatedGroups ucg')
+                ->where('ucg.disabled', State::ENABLED)
+                ->get('ucg.*, uuid') ?? [];
 
         $userFriends = UserFriend::query()
             ->where('user_id', Auth::id())
@@ -36,6 +39,7 @@ abstract class UserController extends BaseController
             ->share('userMainGroups', $userMainGroups)
             ->share('usersGroup', $usersGroup)
             ->share('userFriends', $userFriends)
-            ->share('userGroups', $userGroups);
+            ->share('userGroups', $userGroups)
+            ->share('user', Auth::user()->first());
     }
 }

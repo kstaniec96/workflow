@@ -1,0 +1,115 @@
+<div class="box-post box-own-post">
+    <form
+        method="POST"
+        autocapitalize="off"
+        autocomplete="off"
+        id="form-share-post"
+        action="{{ route('user.home.index') }}"
+    >
+        <input type="hidden" value="{{ csrfToken() }}" name="csrf_token">
+
+        <fieldset class="row-textarea">
+            <div class="avatar-md">
+                <span class="material-icons-outlined">face</span>
+            </div>
+
+            <textarea autofocus name="post" id="message" placeholder="Opublikuj coś fajnego..." class="form-control"></textarea>
+        </fieldset>
+
+        <fieldset class="row-button">
+            <button type="submit" class="custom-button bg-color-green">
+                <span>Opublikuj post</span>
+            </button>
+        </fieldset>
+    </form>
+</div>
+
+<div class="box-post user-post">
+    {% if posts is not empty %}
+        {% for post in posts %}
+            <div class="post-item">
+                <div class="post-top">
+                    <div class="post-top-left">
+                        <div class="post-avatar">
+                            <img src="{{ asset('images/vendor/default/avatar-default.png') }}" alt="avatar">
+                        </div>
+                        <strong>{{ userPost(post.user_id).username }}</strong>
+                    </div>
+
+                    <div class="post-top-right">
+                        <div class="post-date">
+                            <small>{{ isoFormat(post.created_at, 'D MMM YY HH:mm') }}</small>
+                        </div>
+
+                        {% if ownerPost(post.id) %}
+                            <div class="post-options" data-id="{{ post.id }}">
+                                <span class="material-icons-outlined btn-post-edit" title="{{ __('app.edit') }}">edit</span>
+                                <span class="material-icons-outlined btn-post-delete" title="{{ __('app.delete') }}">delete</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="post-content">
+                    <span>{{ post.content }}</span>
+                </div>
+
+                <div class="post-bottom">
+                    <div class="post-bottom-top">
+                        <button class="btn btn-show-comments">Komentarze ({{ qntyComments(post.id) }})</button>
+                        <button class="btn {{ ownerCommentLike(post.id, false) ? 'btn-unlike-post' : 'btn-like-post' }}" style="margin-left: 5px">
+                            <span class="likes-name">Polubienia</span>
+                            (<span class="qnty-likes">{{ qntyLikes(post.id) }}</span>)
+                        </button>
+                    </div>
+
+                    <div class="post-bottom-comments" data-post-id="{{ post.id }}">
+                        {% set comments = comments(post.id) %}
+
+                        {% if comments is not empty %}
+                            {% for comment in comments %}
+                                <div class="post-comment-item" data-comment-id="{{ comment.id }}">
+                                    <div class="post-comment-avatar">
+                                        {% if ownerCommentLike(comment.id) %}
+                                            <span class="material-icons-outlined btn-comment-edit" title="{{ __('app.edit') }}">edit</span>
+                                            <span class="material-icons-outlined btn-comment-delete" title="{{ __('app.delete') }}">delete</span>
+                                        {% endif %}
+
+                                        <img src="{{ asset('images/vendor/default/avatar-default.png') }}" alt="avatar">
+                                    </div>
+
+                                    <div class="post-comment-message">
+                                        <span>{{ comment.message }}</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="none-comments">
+                                <span>Brak komentarzy do wyświetlenia</span>
+                            </div>
+                        {% endif %}
+
+                        <div class="post-comment-item post-comment-create">
+                            <div class="post-comment-avatar">
+                                <img src="{{ asset('images/vendor/default/avatar-default.png') }}" alt="avatar">
+                            </div>
+
+                            <div class="post-comment-message">
+                                <textarea name="comment-post"  placeholder="Dodaj komentarz" class="form-control post-comment"></textarea>
+                                <button type="submit" class="custom-button btn-comment-create bg-color-black">
+                                    <span>Skomentuj</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="post-item post-item-none">
+            <div class="post-content">
+                <span>Brak postów do wyświetlenia</span>
+            </div>
+        </div>
+    {% endif %}
+</div>

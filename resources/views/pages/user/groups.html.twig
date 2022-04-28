@@ -1,9 +1,135 @@
 {% extends 'user/user.html.twig' %}
-{% block title %} {{ __('Groups') }} {% endblock %}
+{% block title %} {{ __('app.title.groups') }} {% endblock %}
+
+{% block scripts %}
+    <script src="{{ version('scripts/user.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('scripts/user/groups.js') }}" nonce="{{ nonce() }}"></script>
+{% endblock %}
 
 {% block user_content %}
     <div class="page-title">
         <span class="material-icons-outlined">loyalty</span>
-        <h1>{{ __('Groups') }}</h1>
+        <h1>{{ __('app.title.groups') }}</h1>
+    </div>
+
+    <div class="box-post box-own-post">
+        <form
+            method="POST"
+            autocapitalize="off"
+            autocomplete="off"
+            id="form-create-group"
+            action="{{ route('user.profile.index') }}"
+        >
+            <input type="hidden" value="{{ csrfToken() }}" name="csrf_token">
+
+            <fieldset class="row-textarea">
+                <input autofocus name="group-name" id="group-name" placeholder="Nazwa Twojej grupy" class="form-control">
+            </fieldset>
+
+            <fieldset class="row-textarea">
+                <textarea autofocus name="group-desc" id="group-desc" placeholder="Opis Twojej grupy"
+                          class="form-control" style="margin: 10px 0 10px 0"></textarea>
+            </fieldset>
+
+            <fieldset class="row-button">
+                <button type="submit" class="custom-button bg-color-green">
+                    <span>Utwórz grupę</span>
+                </button>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="box-post box-settings box-friends">
+        <h1 style="margin-bottom: 10px">Twoje grupy</h1>
+        {% set exists = false %}
+
+        {% if userGroups is not empty %}
+            {% for group in userGroups %}
+                <div class="friend-item">
+                    <div class="friend-item-top">
+                        <div class="friend-item-left">
+                            <div class="friend-avatar" style="background-image: url('{{ asset('images/vendor/default/logo-group-default.jpg') }}')"></div>
+
+                            <div class="friend-name">
+                                <strong>{{ group.name }}</strong>
+                            </div>
+                        </div>
+
+                        <div class="friend-item-right" data-group-id="{{ group.id }}">
+                            <button type="submit" class="custom-button bg-color-danger btn-delete-group">
+                                <span>Usuń</span>
+                            </button>
+
+                            <button type="submit" class="custom-button bg-color-green btn-edit-group">
+                                <span>Edytuj</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="friend-item-content">
+                        <span>{{ group.description }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if userGroups is empty %}
+            <div class="post-item post-item-none">
+                <div class="post-content">
+                    <span>Brak grup do wyświetlenia</span>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <hr>
+
+    <div class="box-post box-settings box-friends">
+        <h1 style="margin-bottom: 10px">Grupy użytkowników</h1>
+        {% set exists = false %}
+
+        {% if groups is not empty %}
+            {% for group in groups %}
+                {% if group.user_id != user.id %}
+                    {% set exists = true %}
+
+                    <div class="friend-item">
+                        <div class="friend-item-top">
+                            <div class="friend-item-left">
+                                <div class="friend-avatar" style="background-image: url('{{ asset('images/vendor/default/logo-group-default.jpg') }}')"></div>
+
+                                <div class="friend-name">
+                                    <strong>{{ group.name }}</strong>
+                                </div>
+                            </div>
+
+                            <div class="friend-item-right" data-group-id="{{ group.id }}">
+                                {% if userJoinedGroup(group.id) == false %}
+                                    <button type="submit" class="custom-button bg-color-green btn-add-group">
+                                        <span>Dołącz</span>
+                                    </button>
+                                {% else %}
+                                    <button type="submit" class="custom-button bg-color-green btn-remove-group is-friends">
+                                        <span>Opuść</span>
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="friend-item-content">
+                            <span>{{ group.description }}</span>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% if groups is empty or exists == false %}
+            <div class="post-item post-item-none">
+                <div class="post-content">
+                    <span>Brak grup do wyświetlenia</span>
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

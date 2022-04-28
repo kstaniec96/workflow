@@ -1,9 +1,58 @@
 {% extends 'user/user.html.twig' %}
-{% block title %} {{ __('Friends') }} {% endblock %}
+{% block title %} {{ __('app.title.friends') }} {% endblock %}
+
+{% block scripts %}
+    <script src="{{ version('scripts/user.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('scripts/user/friends.js') }}" nonce="{{ nonce() }}"></script>
+{% endblock %}
 
 {% block user_content %}
     <div class="page-title">
         <span class="material-icons-outlined">people</span>
-        <h1>{{ __('Friends') }}</h1>
+        <h1>{{ __('app.title.friends') }}</h1>
+    </div>
+
+    <div class="box-post box-settings box-friends">
+        {% set exists = false %}
+
+        {% if users is not empty %}
+            {% for friend in users %}
+                {% if friend.id != user.id %}
+                    {% set exists = true %}
+
+                    <div class="friend-item">
+                        <div class="friend-item-top">
+                            <div class="friend-item-left">
+                                <div class="friend-avatar" style="background-image: url('{{ asset('images/vendor/default/avatar-default.png') }}')"></div>
+
+                                <div class="friend-name">
+                                    <strong>{{ friend.username }}</strong>
+                                </div>
+                            </div>
+
+                            <div class="friend-item-right" data-friend-id="{{ friend.id }}">
+                                {% if isFriends(friend.id) == false %}
+                                    <button type="submit" class="custom-button bg-color-green btn-add-friend">
+                                        <span>Dodaj</span>
+                                    </button>
+                                {% else %}
+                                    <button type="submit" class="custom-button bg-color-green btn-remove-friend is-friends">
+                                        <span>Usuń</span>
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% if users is empty or exists == false %}
+            <div class="post-item post-item-none">
+                <div class="post-content">
+                    <span>Brak użytkowników do wyświetlenia</span>
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

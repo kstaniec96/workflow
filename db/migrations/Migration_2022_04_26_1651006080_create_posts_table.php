@@ -15,6 +15,7 @@ class Migration_2022_04_26_1651006080_create_posts_table extends Migration
               `id` bigint UNSIGNED NOT NULL,
               `user_id` int UNSIGNED NOT NULL,
               `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+              `disabled` tinyint UNSIGNED NOT NULL DEFAULT 0,
               `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
               `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;

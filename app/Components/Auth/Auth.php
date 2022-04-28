@@ -42,22 +42,22 @@ class Auth implements AuthInterface
      * Get logged user data.
      *
      * @param mixed $relations
-     * @return null|Model
+     * @return Model
      */
-    public static function user($relations = null): ?Model
+    public static function user($relations = null): Model
     {
+        /** @var User $user */
+        $user = User::query();
+
         if (self::checkSession()) {
             try {
-                /** @var User $user */
-                $user = User::query();
-
                 return $user->with($relations)->where($user->getTableAlias().'.id', self::id());
             } catch (Exception $e) {
                 throw new RuntimeException($e->getMessage());
             }
         }
 
-        return null;
+        return $user;
     }
 
     /**

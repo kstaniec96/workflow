@@ -19,7 +19,7 @@ class RegisterSecondStepValidator extends FormValidator
     public function fields(): array
     {
         return [
-            'groups' => 'grupy',
+            'groups' => __('validator.fields.groups'),
         ];
     }
 

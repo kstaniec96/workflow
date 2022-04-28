@@ -20,7 +20,7 @@ class LoginService implements LoginInterface
         try {
             $user = User::query()->where('email', $validated['email'])->first();
 
-            if (is_null($user) || !Hash::verify($validated['password'], $user->password)) {
+            if (!$user || !Hash::verify($validated['password'], $user->password)) {
                 throw new UnprocessableException(__('app.The given e-mail address or password is incorrect'));
             }
 
@@ -36,7 +36,7 @@ class LoginService implements LoginInterface
             $authToken = AuthToken::generate($user);
 
             return [
-                'accessToken' => $authToken->token(),
+                'access_token' => $authToken->token(),
                 'expire' => $authToken->expire(),
             ];
         } catch (Exception $e) {

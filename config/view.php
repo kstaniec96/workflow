@@ -41,6 +41,15 @@ return [
          * Custom functions.
          */
         ['activeNavItem'],
+        ['isoFormat'],
+        ['ownerPost'],
+        ['userPost'],
+        ['isFriends'],
+        ['userJoinedGroup'],
+        ['qntyComments'],
+        ['qntyLikes'],
+        ['comments'],
+        ['ownerCommentLike'],
     ],
 
     /**

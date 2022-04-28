@@ -31,7 +31,7 @@ class Response implements ResponseInterface
         int $options = JSON_THROW_ON_ERROR,
         bool $json = false
     ): string {
-        $status = $status < 100 ? HttpStatus::UNPROCESSABLE_ENTITY : $status;
+        $status = $status < 100 ? HttpStatus::INTERNAL_SERVER_ERROR : $status;
         $this->status($status);
 
         if (is_string($data)) {

@@ -30,7 +30,7 @@ return [
         /*
          * Custom rule valid messages.
          */
-        //
+        'password' => 'The password must contain at least one upper and lower case letter, one number and one special character.',
     ],
 
     /*
@@ -39,5 +39,18 @@ return [
     'errors' => [
         'ruleCannotByEmpty' => 'Rule cannot be empty',
         'ruleDoesNotExist' => 'Rule :rule does not exist',
+    ],
+
+    /*
+     * Fields name.
+     */
+    'fields' => [
+        'password' => 'password',
+        'username' => 'username',
+        'groups' => 'groups',
+        'password-confirm' => 'confirm the password',
+        'message' => 'message',
+        'name' => 'name',
+        'description' => 'description',
     ],
 ];

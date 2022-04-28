@@ -18,6 +18,7 @@ class Migration_2022_04_26_1651006164_create_user_created_groups_table extends M
               `description` text CHARACTER SET utf8 COLLATE utf8_general_ci,
               `logo` varchar(100) DEFAULT NULL,
               `bg` varchar(100) DEFAULT NULL,
+              `disabled` tinyint UNSIGNED NOT NULL DEFAULT 0,
               `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
               `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;

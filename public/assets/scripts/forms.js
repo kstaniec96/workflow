@@ -1,88 +1,5 @@
 // Auth Scripts
 const Forms = function () {
-    const handleForm = function ($form, config) {
-        let isOk = true;
-        let text = 'Uzupełnij wymagane pola!';
-
-        let $btn = $form.find('button[type="submit"]');
-        const $required = $form.find('.required:visible');
-
-        $required.each(function () {
-            let $t = $(this);
-            const $parent = $(this).parent();
-
-            if ((App.empty($t.val())) || ($t.is(':checked') && $t.attr('type') === 'checkbox')) {
-                $parent.addClass('input-danger');
-                isOk = false;
-            }
-        });
-
-        let password = App.isset(config.password, false);
-
-        if (isOk) {
-            const $email = $form.find('#email');
-
-            if (Validation.email($email.val()) === false && password === false && !App.empty($email.val())) {
-                isOk = false;
-                text = 'Podany adres e-mail jest nieprawidłowy!';
-
-                $email.parent().addClass('input-danger');
-            }
-
-            if (config.password === true) {
-                const $password = $form.find('#password');
-                const $passwordConfirm = $form.find('#password-confirm');
-
-                if ($form.find('#password').val() !== $passwordConfirm.val()) {
-                    isOk = false;
-                    text = 'Podane hasła są różne!';
-
-                    $password.parent().addClass('input-danger');
-                    $passwordConfirm.parent().addClass('input-danger');
-                }
-            }
-
-            if (isOk) {
-                if ($btn.hasClass('stoped')) {
-                    return false;
-                }
-
-                $btn.addClass('stoped');
-                let stopped = App.isset(config.stopped, false);
-
-                App.AjaxStandard({
-                    isAlertFormValid: false,
-                    preloaderButton: true,
-                    preloaderType: 'inside',
-
-                    btn: $btn,
-                    url: config.url,
-                    method: App.isset(config.method, 'POST'),
-                    data: config.data,
-                    auth: App.isset(config.auth, false),
-
-                    success: function (response) {
-                        if (config.callback && typeof (config.callback) === 'function') {
-                            config.callback.call(this, response);
-                        }
-
-                        if (!stopped) {
-                            location.reload();
-                        }
-                    }
-                });
-            }
-        }
-
-        if (!isOk) {
-            App.alert(text);
-        }
-
-        $required.on('keyup change', function () {
-            $(this).parent().removeClass('input-danger');
-        });
-    };
-
     const handleLoginForm = function () {
         const $form = $('#form-login');
 
@@ -90,7 +7,7 @@ const Forms = function () {
             $form.on('submit', function (e) {
                 e.preventDefault();
 
-                handleForm($form, {
+                App.form($form, {
                     url: '/auth/login',
                     data: {
                         email: $form.find('#email').val(),
@@ -112,7 +29,7 @@ const Forms = function () {
             $form.on('submit', function (e) {
                 e.preventDefault();
 
-                handleForm($form, {
+                App.form($form, {
                     url: '/auth/register',
                     stopped: true,
                     register: true,
@@ -138,7 +55,7 @@ const Forms = function () {
             $form.on('submit', function (e) {
                 e.preventDefault();
 
-                handleForm($form, {
+                App.form($form, {
                     url: '/auth/password',
                     stopped: true,
                     data: {
@@ -161,7 +78,7 @@ const Forms = function () {
             $form.on('submit', function (e) {
                 e.preventDefault();
 
-                handleForm($form, {
+                App.form($form, {
                     url: '/auth/password/change',
                     password: true,
                     stopped: true,
@@ -207,7 +124,7 @@ const Forms = function () {
                     return false;
                 }
 
-                handleForm($form, {
+                App.form($form, {
                     url: '/auth/register/groups',
                     stopped: true,
                     data: {

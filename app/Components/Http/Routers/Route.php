@@ -66,6 +66,8 @@ class Route implements RouteInterface
      */
     public static function web(array $params, $render): Route
     {
+        header('Content-Type: text/html; charset=utf-8');
+
         return self::routing($params, $render);
     }
 
@@ -75,6 +77,7 @@ class Route implements RouteInterface
     public static function api(array $params, $render): Route
     {
         if (request()->isApi()) {
+            header('Content-Type: application/json; charset=utf-8');
             Csrf::check();
         }
 

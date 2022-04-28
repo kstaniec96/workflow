@@ -14,7 +14,9 @@ class HomeController extends BaseController
 {
     public function index(): string
     {
-        $groups = Group::query()->where('active', State::ACTIVE)->get();
+        $groups = Group::query()
+            ->where('active', State::ACTIVE)
+            ->get();
 
         $users = User::query()
             ->where('active', State::ACTIVE)
@@ -22,6 +24,7 @@ class HomeController extends BaseController
             ->get();
 
         $usersGroups = UserCreatedGroup::query()
+            ->where('ucg.disabled', State::ENABLED)
             ->with('user')
             ->get('ucg.*, uuid');
 

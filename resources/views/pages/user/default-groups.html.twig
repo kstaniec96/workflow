@@ -1,9 +1,56 @@
 {% extends 'user/user.html.twig' %}
-{% block title %} {{ __('Default groups') }} {% endblock %}
+{% block title %} {{ __('app.title.defaultGroups') }} {% endblock %}
+
+{% block scripts %}
+    <script src="{{ version('scripts/user.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('scripts/user/default-groups.js') }}" nonce="{{ nonce() }}"></script>
+{% endblock %}
 
 {% block user_content %}
     <div class="page-title">
         <span class="material-icons-outlined">favorite_border</span>
-        <h1>{{ __('Default groups') }}</h1>
+        <h1>{{ __('app.title.defaultGroups') }}</h1>
+    </div>
+
+    <div class="box-post box-settings box-friends">
+        {% if groups is not empty %}
+            {% for group in groups %}
+                <div class="friend-item">
+                    <div class="friend-item-top">
+                        <div class="friend-item-left">
+                            <div class="friend-avatar" style="background-image: url('{{ asset('images/vendor/groups/' ~ group.image) }}')"></div>
+
+                            <div class="friend-name">
+                                <strong>{{ group.name }}</strong>
+                            </div>
+                        </div>
+
+                        <div class="friend-item-right" data-group-id="{{ group.id }}">
+                            {% if userJoinedGroup(group.id, true) == false %}
+                                <button type="submit" class="custom-button bg-color-green btn-add-group">
+                                    <span>Dołącz</span>
+                                </button>
+                            {% else %}
+                                <button type="submit" class="custom-button bg-color-green btn-remove-group is-friends">
+                                    <span>Opuść</span>
+                                </button>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="friend-item-content">
+                        <span>{{ group.description }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if groups is empty %}
+            <div class="post-item post-item-none">
+                <div class="post-content">
+                    <span>Brak grup do wyświetlenia</span>
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

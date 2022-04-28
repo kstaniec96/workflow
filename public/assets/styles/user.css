@@ -158,19 +158,26 @@ MAIN CONTENT
 .user-container .box-post {
     background: var(--white);
     padding: 20px;
-    border-bottom: 1px solid var(--snow);
 }
 
 .user-container .box-own-post {
     background: var(--secondary);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, .1);
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid var(--snow);
 }
 
-.user-container .box-post textarea {
+.user-container .box-post textarea, .user-container .box-post input {
     background: var(--white);
     box-shadow: none;
     border-radius: 30px;
     padding: 10px 20px;
     margin-left: 10px;
+}
+
+.user-container .box-post input {
+    margin-left: 0;
 }
 
 .user-container .box-own-post fieldset {
@@ -187,8 +194,267 @@ MAIN CONTENT
     margin-top: 5px;
 }
 
-.user-container .box-own-post fieldset.row-button .custom-button {
+.user-container .box-own-post fieldset.row-button .custom-button,
+.user-container .user-post .post-content button {
     box-shadow: none;
+}
+
+.user-container .user-post {
+    padding: 0;
+    margin-top: 20px;
+}
+
+.user-container .user-post .post-item {
+    margin-top: 20px;
+}
+
+.user-container .user-post .post-top {
+    border-bottom: 1px dashed var(--snow);
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-top: 1px solid var(--snow);
+}
+
+.user-container .user-post .post-top > * {
+    display: flex;
+    align-items: center;
+}
+
+.user-container .user-post .post-top .post-avatar img {
+    width: 35px;
+    border-radius: 100%;
+    margin-right: 10px;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, .1);
+}
+
+.user-container .user-post .post-top .post-date small {
+    color: #999;
+    font-size: 9px;
+}
+
+.user-container .user-post .post-top .post-options {
+    background: var(--white);
+    border: 1px solid var(--snow);
+    border-radius: 30px;
+    margin-left: 10px;
+    display: flex;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .05);
+}
+
+.user-container .user-post .post-top .post-options > * {
+    font-size: 14px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.user-container .user-post .post-top .post-options > *:not(:first-child) {
+    border-left: 1px solid var(--snow);
+}
+
+.user-container .user-post .post-content {
+    border-bottom: 1px solid var(--snow);
+    padding: 20px;
+}
+
+.user-container .user-post .post-content .post-edit,
+.user-container .comment-edit {
+    display: flex;
+    align-items: center;
+}
+
+.user-container .comment-edit {
+    width: 100%;
+}
+
+.user-container .user-post .post-content textarea {
+    margin: 0;
+}
+
+.user-container .user-post .post-content button {
+    color: var(--white);
+    margin-left: 10px;
+}
+
+.user-container .user-post .post-bottom {
+    width: 100%;
+    background: var(--secondary);
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--snow);
+}
+
+.user-container .user-post .post-bottom .post-bottom-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.user-container .user-post .post-bottom-top button {
+    font-size: 11px;
+}
+
+.user-container .user-post .post-bottom-top button:hover {
+    text-decoration: underline;
+}
+
+.user-container .user-post .post-bottom-comments {
+    border-top: 1px solid var(--snow);
+    margin-top: 10px;
+    padding-top: 10px;
+    display: none;
+}
+
+.user-container .user-post .post-comment-item {
+    background: var(--white);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--snow);
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.user-container .user-post .post-comment-avatar {
+    display: flex;
+    align-items: center;
+}
+
+.user-container .user-post .post-comment-avatar span {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.user-container .user-post .post-comment-avatar img {
+    width: 30px;
+    border-radius: 100%;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+.user-container .user-post .post-comment-message {
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.user-container .user-post .post-comment-create .post-comment-message {
+    width: 100%;
+}
+
+.user-container .user-post .post-comment-message textarea {
+    margin-left: 0;
+    height: 35px;
+    padding: 7px 10px;
+    background: var(--secondary);
+}
+
+.user-container .user-post .post-comment-message button {
+    box-shadow: none;
+    margin-left: 5px;
+    min-height: 10px;
+    padding: 5px;
+}
+
+.user-container .none-comments {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.user-container .post-item-none {
+    text-align: center;
+}
+
+.user-container .box-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+    background-position: center;
+}
+
+.user-container .box-profile .profile-avatar img {
+    width: 100px;
+    border-radius: 100%;
+    margin-right: 15px;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, .25);
+    border: 2px solid var(--white)
+}
+
+.user-container .box-profile .profile-name span {
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--white);
+    text-shadow: 0 0 4px rgba(0, 0, 0, .15)
+}
+
+.user-container .box-settings {
+    background: var(--white);
+}
+
+.user-container .box-settings hr {
+    margin: 20px 0;
+}
+
+.user-container .friend-item {
+    border: 1px solid var(--snow);
+    border-bottom: 0;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.user-container .friend-item .friend-item-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.user-container .friend-item:nth-child(even) {
+    background: var(--secondary);
+}
+
+.user-container .friend-item:last-child {
+    border-bottom: 1px solid var(--snow);
+}
+
+.user-container .friend-item .friend-avatar {
+    display: flex;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, .05);
+    margin-right: 10px;
+    background-position: center;
+    background-size: cover;
+}
+
+.user-container .friend-item .friend-item-left {
+    display: flex;
+    align-items: center;
+}
+
+.user-container .friend-item .friend-item-right button {
+    min-height: 20px;
+    padding: 8px;
+    box-shadow: none;
+}
+
+.user-container .friend-item .friend-item-right button.is-friends {
+    background: var(--danger) !important
+}
+
+.user-container .friend-item-content {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.user-container .friend-item-content textarea {
+    margin-left: 0;
 }
 
 /* -------------------------------------------------------------------

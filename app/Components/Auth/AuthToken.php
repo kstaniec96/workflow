@@ -9,10 +9,13 @@
 
 namespace Simpler\Components\Auth;
 
+use RuntimeException;
 use Simpler\Components\Config;
 use Simpler\Components\DateTime;
+use Simpler\Components\Enums\HttpStatus;
 use Simpler\Components\Exceptions\AuthException;
 use Simpler\Components\Exceptions\ResponseException;
+use Simpler\Components\Exceptions\ThrowException;
 use Simpler\Components\Facades\File;
 use Simpler\Components\Auth\Interfaces\AuthTokenInterface;
 use Exception;
@@ -96,7 +99,11 @@ class AuthToken implements AuthTokenInterface
             throw new AuthException('No token was able to be extracted from the authorization header');
         }
 
-        $jwt = JWT::decode($jwt, new Key(self::getSecretString(), self::ALGORITHM));
+        try {
+            $jwt = JWT::decode($jwt, new Key(self::getSecretString(), self::ALGORITHM));
+        } catch (Exception $e) {
+            throw new RuntimeException($e->getMessage(), HttpStatus::PAGE_EXPIRED);
+        }
 
         if (
             $jwt->iss !== url()->domain() ||

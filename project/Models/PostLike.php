@@ -13,5 +13,8 @@ use Simpler\Components\Database\Model;
  */
 class PostLike extends Model
 {
-    //
+    protected $relations = [
+        'user' => [User::class, 'user_id', 'user_id'],
+        'post' => [Post::class, 'post_id', 'post_id'],
+    ];
 }

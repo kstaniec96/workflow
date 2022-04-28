@@ -36,10 +36,10 @@ interface DBInterface
     /**
      * @param string $query
      * @param array $bind
-     * @param string $mode
+     * @param int $mode
      * @return mixed
      */
-    public static function rawQueryAll(string $query, array $bind = [], string $mode = PDO::FETCH_CLASS);
+    public static function rawQueryAll(string $query, array $bind = [], int $mode = PDO::FETCH_CLASS);
 
     /**
      * @param string $query
@@ -50,10 +50,10 @@ interface DBInterface
     /**
      * @param string $query
      * @param array $bind
-     * @param string $mode
+     * @param int $mode
      * @return mixed
      */
-    public static function rawQueryOne(string $query, array $bind = [], string $mode = PDO::FETCH_OBJ);
+    public static function rawQueryOne(string $query, array $bind = [], int $mode = PDO::FETCH_OBJ);
 
     /**
      * @return PDO

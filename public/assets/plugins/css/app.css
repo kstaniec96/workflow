@@ -59,6 +59,10 @@ Colors
     background: var(--warning) !important;
 }
 
+.bg-color-danger {
+    background: var(--danger) !important;
+}
+
 .color-white {
     color: var(--white) !important;
 }

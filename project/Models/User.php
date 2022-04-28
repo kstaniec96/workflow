@@ -28,6 +28,7 @@ class User extends Model
     protected $relations = [
         'posts' => [Post::class, 'id', 'user_id'],
         'likes' => [PostLike::class, 'id', 'user_id'],
+        'comments' => [PostComment::class, 'id', 'user_id'],
         'userCreatedGroups' => [UserCreatedGroup::class, 'id', 'user_id'],
         'friends' => [UserFriend::class, 'id', 'user_id'],
         'userGroups' => [UserGroup::class, 'id', 'user_id'],

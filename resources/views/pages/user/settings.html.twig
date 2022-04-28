@@ -1,9 +1,82 @@
 {% extends 'user/user.html.twig' %}
-{% block title %} {{ __('Settings') }} {% endblock %}
+{% block title %} {{ __('app.title.settings') }} {% endblock %}
+
+{% block scripts %}
+    <script src="{{ version('scripts/user.js') }}" nonce="{{ nonce() }}"></script>
+    <script src="{{ version('scripts/user/settings.js') }}" nonce="{{ nonce() }}"></script>
+{% endblock %}
 
 {% block user_content %}
     <div class="page-title">
         <span class="material-icons-outlined">settings</span>
-        <h1>{{ __('Settings') }}</h1>
+        <h1>{{ __('app.title.settings') }}</h1>
+    </div>
+
+    <div class="box-post box-settings">
+        <form
+            method="POST"
+            autocapitalize="off"
+            autocomplete="off"
+            id="form-basic-settings"
+            action="{{ route('user.settings.index') }}"
+        >
+            <input type="hidden" value="{{ csrfToken() }}" name="csrf_token">
+
+            <div class="form-prepend-group form-group">
+                <div class="form-prepend">
+                    <span class="material-icons-outlined">mail_outline</span>
+                </div>
+
+                <input name="email" value="{{ user.email }}" placeholder="Adres e-mail" id="email" class="form-control required">
+            </div>
+
+            <div class="form-prepend-group form-group">
+                <div class="form-prepend">
+                    <span class="material-icons-outlined">person</span>
+                </div>
+
+                <input name="username" value="{{ user.username }}" placeholder="Nazwa użytkownika" id="username" class="form-control required">
+            </div>
+
+            <fieldset class="row-button">
+                <button type="submit" class="custom-button bg-color-green">
+                    <span>Zapisz ustawienia</span>
+                </button>
+            </fieldset>
+        </form>
+
+        <hr>
+
+        <form
+            method="POST"
+            autocapitalize="off"
+            autocomplete="off"
+            id="form-change-password"
+            action="{{ route('user.settings.index') }}"
+        >
+            <input type="hidden" value="{{ csrfToken() }}" name="csrf_token">
+
+            <div class="form-prepend-group form-group">
+                <div class="form-prepend">
+                    <span class="material-icons-outlined">lock</span>
+                </div>
+
+                <input type="password" name="current-password" placeholder="Aktualne hasło" id="current-password" class="form-control required">
+            </div>
+
+            <div class="form-prepend-group form-group">
+                <div class="form-prepend">
+                    <span class="material-icons-outlined">lock</span>
+                </div>
+
+                <input type="password" name="new-password" placeholder="Nowe hasło" id="new-password" class="form-control required">
+            </div>
+
+            <fieldset class="row-button">
+                <button type="submit" class="custom-button bg-color-green">
+                    <span>Zmień hasło</span>
+                </button>
+            </fieldset>
+        </form>
     </div>
 {% endblock %}

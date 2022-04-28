@@ -14,6 +14,7 @@ use Simpler\Components\Database\Model;
  * @property string $description
  * @property string $logo
  * @property string $bg
+ * @property string $disabled
  */
 class UserCreatedGroup extends Model
 {

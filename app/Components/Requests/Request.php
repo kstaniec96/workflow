@@ -88,7 +88,7 @@ class Request extends XSSClean implements RequestInterface
      * @param bool $option
      * @return array|int|string|null
      */
-    public function get(string $key, bool $option = false)
+    public function get(string $key, bool $option = true)
     {
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'GET':

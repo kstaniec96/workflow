@@ -43,7 +43,7 @@ return [
          * should be displayed in case the user's
          * language is not declared.
          */
-        'default' => 'en',
+        'default' => 'pl',
 
         /**
          * Default time zone for the project.

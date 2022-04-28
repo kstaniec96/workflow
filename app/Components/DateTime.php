@@ -34,7 +34,7 @@ class DateTime implements DateTimeInterface
     /**
      * Date to iso format.
      *
-     * @param $date
+     * @param mixed $date
      * @param string $format
      * @return string
      */

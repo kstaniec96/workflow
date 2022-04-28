@@ -20,13 +20,21 @@ class PasswordSecondStepValidator extends FormValidator
     public function fields(): array
     {
         return [
-            'password' => 'hasło',
-            'password_confirm' => 'potwierdź hasło'
+            'password' => __('validator.fields.password'),
+            'password_confirm' => __('validator.fields.password-confirm'),
         ];
     }
 
     public function errors(): array
     {
-        return [];
+        return [
+            'password' => [
+                'password' => __('validator.rules.password'),
+            ],
+
+            'password_confirm' => [
+                'password' => __('validator.rules.password'),
+            ],
+        ];
     }
 }

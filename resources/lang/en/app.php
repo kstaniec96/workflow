@@ -2,7 +2,20 @@
 
 return [
     'title' => [
-        '404' => 'The page you provided was not found!',
+        'home' => 'Home',
+        'login' => 'Login',
+        'register' => 'Register',
+        'changePassword' => 'Change Password',
+
+        'profile' => 'Profile',
+        'groups' => 'Groups',
+        'settings' => 'Settings',
+        'friends' => 'Friends',
+        'defaultGroups' => 'Default groups',
+    ],
+
+    'user' => [
+        'main' => 'Main',
     ],
 
     'The given e-mail address or password is incorrect' => 'The given e-mail address or password is incorrect',
@@ -17,4 +30,6 @@ return [
     'The given e-mail address does not exist' => 'The given e-mail address does not exist',
     'The passwords provided do not match' => 'The passwords provided do not match',
     'You cannot change your password yet' => 'You cannot change your password yet',
+    'The current password provided is incorrect' => 'The current password provided is incorrect',
+    'You want to update unchanged data' => 'You want to update unchanged data',
 ];

@@ -108,7 +108,7 @@
                     {% for userFriend in userFriends %}
                         <li>
                             <a href="#" style="background-image: url('{{ storage(userFriend.uuid ~ '/images/' ~ userFriend.bg) }}')">
-                                <div class="group-logo" style="background-image: url('{{ storage(userFriend.uuid ~ '/images/' ~ userFriend.avatar) }}')"></div>
+                                <div class="group-logo" style="background-image: url('{{ asset('images/vendor/default/avatar-default.png') }}')"></div>
                                 <h3>{{ userFriend.username }}</h3>
                             </a>
                         </li>

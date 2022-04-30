@@ -8,9 +8,11 @@ use Exception;
 use Project\Interfaces\Services\User\Settings\SettingsInterface;
 use Project\Models\User;
 use Simpler\Components\Auth\Auth;
+use Simpler\Components\Enums\State;
 use Simpler\Components\Exceptions\ThrowException;
 use Simpler\Components\Exceptions\UnprocessableException;
 use Simpler\Components\Security\Hash;
+use Simpler\Utils\StringUtil;
 
 class SettingsService implements SettingsInterface
 {
@@ -54,6 +56,22 @@ class SettingsService implements SettingsInterface
             $user->update([
                 'password' => Hash::make($validated['new_password']),
             ]);
+        } catch (Exception $e) {
+            throw new ThrowException($e);
+        }
+    }
+
+    public function delete(): void
+    {
+        try {
+            $user = Auth::user();
+
+            $user->update([
+                'active' => State::INACTIVE,
+                'email' => $user->value('email').'_deleted_'.StringUtil::random(5),
+            ]);
+
+            Auth::logout();
         } catch (Exception $e) {
             throw new ThrowException($e);
         }

@@ -78,5 +78,23 @@
                 </button>
             </fieldset>
         </form>
+
+        <hr>
+
+        <form
+            method="POST"
+            autocapitalize="off"
+            autocomplete="off"
+            id="form-delete-account"
+            action="{{ route('user.settings.index') }}"
+        >
+            <input type="hidden" value="{{ csrfToken() }}" name="csrf_token">
+
+            <fieldset class="row-button">
+                <button type="submit" class="custom-button bg-color-danger" style="width:100%">
+                    <span>Usuń konto</span>
+                </button>
+            </fieldset>
+        </form>
     </div>
 {% endblock %}

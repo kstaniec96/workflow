@@ -32,7 +32,7 @@ class PasswordService implements PasswordInterface
             /** @var RegisterService $registerService */
             $registerService = instance(RegisterService::class);
 
-            if ($registerService->verify($user->value('token'))) {
+            if ($registerService->verify($user->value('token'), true)) {
                 throw new UnprocessableException(__('app.You cannot change your password yet'));
             }
 
@@ -77,7 +77,7 @@ class PasswordService implements PasswordInterface
             /** @var RegisterService $registerService */
             $registerService = instance(RegisterService::class);
 
-            if (!$registerService->verify($token)) {
+            if (!$registerService->verify($token, true)) {
                 throw new UnprocessableException(__('app.The token has expired'));
             }
 

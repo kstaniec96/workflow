@@ -71,9 +71,10 @@ class RegisterService implements RegisterInterface
 
     /**
      * @param null|string $token
+     * @param bool $reset
      * @return bool
      */
-    public function verify(?string $token): bool
+    public function verify(?string $token, bool $reset = false): bool
     {
         try {
             if (is_null($token)) {
@@ -84,7 +85,9 @@ class RegisterService implements RegisterInterface
             $user = User::query()->where('token', $token);
 
             if (($user->value('expired')) < now()->format('Y-m-d H:i:s')) {
-                $user->delete();
+                if (!$reset) {
+                    $user->delete();
+                }
 
                 return false;
             }

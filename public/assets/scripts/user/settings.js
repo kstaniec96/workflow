@@ -52,10 +52,40 @@ const Settings = function () {
         }
     };
 
+    const handleDeleteAccount = function () {
+        const $form = $('#form-delete-account');
+
+        if (App.exists($form)) {
+            $form.on('submit', function (e) {
+                e.preventDefault();
+
+                App.alertConfirm({
+                    text: 'Czy na pewno chcesz usunąć konto? Nie ma możliwości jego przywrócenia.',
+                    yes: function () {
+                        App.form($form, {
+                            url: '/user/settings/delete',
+                            auth: true,
+                            stopped: true,
+
+                            callback: function () {
+                                App.alert('Konto zostało usunięte!', '', 'success').then(function (result) {
+                                    if (result.value) {
+                                        location.reload();
+                                    }
+                                });
+                            }
+                        });
+                    },
+                });
+            });
+        }
+    };
+
     return {
         init: function () {
             handleUpdate();
             handleChange();
+            handleDeleteAccount();
         }
     }
 }();

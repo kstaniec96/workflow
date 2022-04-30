@@ -31,4 +31,11 @@ class SettingsController extends UserController
 
         return $this->json();
     }
+
+    public function delete(SettingsService $settingsService): string
+    {
+        $settingsService->delete();
+
+        return $this->json();
+    }
 }

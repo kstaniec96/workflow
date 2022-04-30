@@ -156,6 +156,12 @@ Route::group(
                     'uri' => '/change',
                     'name' => 'change',
                 ], [SettingsController::class, 'change']);
+
+                // Delete
+                Route::api([
+                    'uri' => '/delete',
+                    'name' => 'delete',
+                ], [SettingsController::class, 'delete']);
             }
         );
 

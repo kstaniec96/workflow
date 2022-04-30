@@ -9,4 +9,6 @@ interface SettingsInterface
     public function update(array $validated): void;
 
     public function change(array $validated): void;
+
+    public function delete(): void;
 }

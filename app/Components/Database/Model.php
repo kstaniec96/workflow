@@ -12,6 +12,7 @@
 
 namespace Simpler\Components\Database;
 
+use RuntimeException;
 use Simpler\Components\Database\Interfaces\ModelInterface;
 use Exception;
 use Simpler\Components\Exceptions\ServerErrorException;
@@ -168,7 +169,7 @@ abstract class Model extends DB implements ModelInterface
 
             return $results;
         } catch (Exception $e) {
-            throw new ThrowException($e);
+            throw new RuntimeException($e->getMessage());
         }
     }
 
@@ -183,7 +184,7 @@ abstract class Model extends DB implements ModelInterface
         try {
             return current($this->limit(1)->get($columns));
         } catch (Exception $e) {
-            throw new ThrowException($e);
+            throw new RuntimeException($e->getMessage());
         }
     }
 
@@ -201,7 +202,7 @@ abstract class Model extends DB implements ModelInterface
 
             return $this->first()[$column] ?? null;
         } catch (Exception $e) {
-            throw new ThrowException($e);
+            throw new RuntimeException($e->getMessage());
         }
     }
 
@@ -217,7 +218,7 @@ abstract class Model extends DB implements ModelInterface
 
             return $this->first('COUNT(*)')['COUNT(*)'];
         } catch (Exception $e) {
-            throw new ThrowException($e);
+            throw new RuntimeException($e->getMessage());
         }
     }
 
@@ -269,7 +270,7 @@ abstract class Model extends DB implements ModelInterface
 
             return true;
         } catch (Exception $e) {
-            throw new ThrowException($e);
+            throw new RuntimeException($e->getMessage());
         }
     }
 
@@ -288,7 +289,7 @@ abstract class Model extends DB implements ModelInterface
 
             return $query->execute();
         } catch (Exception $e) {
-            throw new ThrowException($e);
+            throw new RuntimeException($e->getMessage());
         }
     }
 
@@ -388,7 +389,7 @@ abstract class Model extends DB implements ModelInterface
         try {
             return !empty($this->value('id'));
         } catch (Exception $e) {
-            throw new ThrowException($e);
+            throw new RuntimeException($e->getMessage());
         }
     }
 
@@ -419,7 +420,7 @@ abstract class Model extends DB implements ModelInterface
         try {
             self::$orderBuilder[] = [$this->joinData($column, $direction)];
         } catch (Exception $e) {
-            throw new ThrowException($e);
+            throw new RuntimeException($e->getMessage());
         }
 
         return new static();
@@ -463,7 +464,7 @@ abstract class Model extends DB implements ModelInterface
                 $type,
             ];
         } catch (Exception $e) {
-            throw new ThrowException($e);
+            throw new RuntimeException($e->getMessage());
         }
 
         return new static();
@@ -617,7 +618,7 @@ abstract class Model extends DB implements ModelInterface
 
             $this->join($relationModel->getTableName(), $statement, $modelRelation[3] ?? 'INNER');
         } catch (Exception $e) {
-            throw new ThrowException($e);
+            throw new RuntimeException($e->getMessage());
         }
     }
 

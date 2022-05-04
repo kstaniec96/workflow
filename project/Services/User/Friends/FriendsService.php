@@ -10,6 +10,7 @@ use Project\Models\User\UserFriend;
 use Simpler\Components\Auth\Auth;
 use Simpler\Components\Database\DB;
 use Simpler\Components\Exceptions\ThrowException;
+use Simpler\Components\Exceptions\UnprocessableException;
 
 class FriendsService implements FriendsInterface
 {
@@ -18,6 +19,16 @@ class FriendsService implements FriendsInterface
         DB::beginTransaction();
 
         try {
+            $maxFriends = env('MAX_NUMBER_OF_FRIENDS');
+
+            if ((Auth::user('friends')->count() + 1) > $maxFriends) {
+                throw new UnprocessableException(
+                    __('app.You can invite up to friends', [
+                        'friends' => $maxFriends,
+                    ])
+                );
+            }
+
             UserFriend::query()->insert([
                 'user_id' => Auth::id(),
                 'friend_id' => $id,

@@ -17,9 +17,24 @@ class OwnGroupsService implements OwnGroupsInterface
     public function create(array $validated): void
     {
         try {
+            $name = $validated['name'];
+            $maxGroupsCreated = env('MAX_NUMBER_OF_GROUPS_CREATED');
+
+            if ((Auth::user('userCreatedGroups')->count() + 1) > $maxGroupsCreated) {
+                throw new UnprocessableException(
+                    __('app.You can create up to groups', [
+                        'groups' => $maxGroupsCreated,
+                    ])
+                );
+            }
+
+            if (UserCreatedGroup::query()->where('name', $name)->exists()) {
+                throw new UnprocessableException(__('app.The specified group name already exists'));
+            }
+
             UserCreatedGroup::query()->insert([
                 'user_id' => Auth::id(),
-                'name' => $validated['name'],
+                'name' => $name,
                 'description' => $validated['description'],
             ]);
         } catch (Exception $e) {

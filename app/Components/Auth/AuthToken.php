@@ -15,7 +15,6 @@ use Simpler\Components\DateTime;
 use Simpler\Components\Enums\HttpStatus;
 use Simpler\Components\Exceptions\AuthException;
 use Simpler\Components\Exceptions\ResponseException;
-use Simpler\Components\Exceptions\ThrowException;
 use Simpler\Components\Facades\File;
 use Simpler\Components\Auth\Interfaces\AuthTokenInterface;
 use Exception;

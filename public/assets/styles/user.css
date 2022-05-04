@@ -397,6 +397,12 @@ MAIN CONTENT
     margin: 20px 0;
 }
 
+.box-settings.box-post input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background: var(--secondary);
+}
+
 .user-container .friend-item {
     border: 1px solid var(--snow);
     border-bottom: 0;

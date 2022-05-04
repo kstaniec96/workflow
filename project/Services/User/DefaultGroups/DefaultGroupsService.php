@@ -9,12 +9,23 @@ use Project\Interfaces\Services\User\DefaultGroups\DefaultGroupsInterface;
 use Project\Models\User\UserMainGroup;
 use Simpler\Components\Auth\Auth;
 use Simpler\Components\Exceptions\ThrowException;
+use Simpler\Components\Exceptions\UnprocessableException;
 
 class DefaultGroupsService implements DefaultGroupsInterface
 {
     public function add(int $id): void
     {
         try {
+            $maxGroupsJoined = env('MAX_NUMBER_OF_MAIN_GROUPS_JOINED');
+
+            if ((Auth::user('userMainGroups')->count() + 1) > $maxGroupsJoined) {
+                throw new UnprocessableException(
+                    __('app.You can join a maximum guide groups', [
+                        'groups' => $maxGroupsJoined,
+                    ])
+                );
+            }
+
             UserMainGroup::query()->insert([
                 'user_id' => Auth::id(),
                 'group_id' => $id,
